@@ -36,3 +36,33 @@ function showQuestion() {
     questionArea.textContent = currentQuestion.question;
 
 }
+
+// set text for each answer button
+answerButtons.forEach((button, index) => {
+    button.textContent = currentQuestion.choices[index]; // set button text to each choice
+})
+
+// call the function initially to display the first question
+showQuestion();
+
+// Adding click event listeners to each answer button
+answerButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Check if the clicked button text matches the correct answer
+        const selectedAnswer = button.textContent;
+        const correctAnswer = questions[currentQuestionIndex].correctAnswer;
+
+        if (selectedAnswer === correctAnswer) {
+            // Update score and display success message
+            score++;
+            alert('Correct!'); // Replace with a better UI feedback if needed
+        } else {
+            // Display try again message
+            alert('Try Again!');
+        }
+
+        // Update the score counter display
+        scoreCounter.textContent = `Score: ${score}`;
+    });
+});
+
