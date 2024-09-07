@@ -1,48 +1,46 @@
 var currentQuestionIndex = 0;
 var score = 0;
+
+// Array of questions with correct answers updated
 const questions = [
     {
         question: "What is the capital of France?",
         choices: ["Berlin", "Madrid", "Paris", "Rome"],
         correctAnswer: "Paris"
     },
-
     {
         question: "What is the capital of Spain?",
         choices: ["Ankara", "Madrid", "Berlin", "Paris"],
-        correctAnswer: "Paris"
+        correctAnswer: "Madrid"
     },
-
     {
         question: "What is the capital of Germany?",
         choices: ["Beijing", "Buenos Aires", "Kyiv", "Berlin"],
-        correctAnswer: "Paris"
+        correctAnswer: "Berlin"
     }
-]
+];
 
-//selectiong elements from the HTLM by their IDs or classes
-var questionArea = document.getElementById('question-area'); //display question
-var answerButtons = document.quesrySelectorAll('.answer-btn'); // answer buttons
-var scoreCounter = document.getElementById('score-counter'); // score display element
-var nextQuestionButton = document.getElementById('next-question'); // next question button
+// Selecting elements from the HTML by their IDs or classes
+var questionArea = document.getElementById('question-area'); // Display question
+var answerButtons = document.querySelectorAll('.answer-btn'); // Answer buttons
+var scoreCounter = document.getElementById('score-counter'); // Score display element
+var nextQuestionButton = document.getElementById('next-question'); // Next question button
 
-// create a function to show a question
-
+// Function to display the current question and set up answer buttons
 function showQuestion() {
-    // get current question
+    // Get the current question object
     const currentQuestion = questions[currentQuestionIndex];
 
-    // display question text
+    // Display the question text
     questionArea.textContent = currentQuestion.question;
 
+    // Set text for each answer button
+    answerButtons.forEach((button, index) => {
+        button.textContent = currentQuestion.choices[index]; // Set button text to each choice
+    });
 }
 
-// set text for each answer button
-answerButtons.forEach((button, index) => {
-    button.textContent = currentQuestion.choices[index]; // set button text to each choice
-})
-
-// call the function initially to display the first question
+// Call the function initially to display the first question
 showQuestion();
 
 // Adding click event listeners to each answer button
@@ -80,4 +78,3 @@ nextQuestionButton.addEventListener('click', () => {
         alert(`Quiz Over! Your final score is: ${score}`);
     }
 });
-
