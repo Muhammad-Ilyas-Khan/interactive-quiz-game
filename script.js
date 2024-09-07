@@ -66,3 +66,18 @@ answerButtons.forEach(button => {
     });
 });
 
+// Add a click event to the Next Question button
+nextQuestionButton.addEventListener('click', () => {
+    // Move to the next question
+    currentQuestionIndex++;
+
+    // Check if there are more questions left
+    if (currentQuestionIndex < questions.length) {
+        // Show the next question
+        showQuestion();
+    } else {
+        // End of quiz logic
+        alert(`Quiz Over! Your final score is: ${score}`);
+    }
+});
+
