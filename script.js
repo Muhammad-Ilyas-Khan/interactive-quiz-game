@@ -25,3 +25,14 @@ var questionArea = document.getElementById('question-area'); //display question
 var answerButtons = document.quesrySelectorAll('.answer-btn'); // answer buttons
 var scoreCounter = document.getElementById('score-counter'); // score display element
 var nextQuestionButton = document.getElementById('next-question'); // next question button
+
+// create a function to show a question
+
+function showQuestion() {
+    // get current question
+    const currentQuestion = questions[currentQuestionIndex];
+
+    // display question text
+    questionArea.textContent = currentQuestion.question;
+
+}
